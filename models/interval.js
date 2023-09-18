@@ -15,6 +15,7 @@ const intervalSchema = new Schema({
     type: Date,
     required: [true, 'please set an ending date for this goal'],
   },
+  relatedGoal: { type: mongoose.ObjectId },
 });
 
 // creating interval model
