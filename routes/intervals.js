@@ -12,10 +12,12 @@ router.get('/intervals', (req, res, next) => {
 // get a list of intervals filtered by query
 router.get('/intervals/filter', (req, res, next) => {
   IntervalModel.find({
-    user: req.query.user,
-    starting: req.query.start,
-    ending: req.query.end,
-    relatedGoal: req.query.goal,
+    $or: [
+      { user: req.query.user },
+      { starting: req.query.start },
+      { ending: req.query.end },
+      { relatedGoal: req.query.goal },
+    ],
   }).then(filteredIntervals => {
     res.send(filteredIntervals);
   });
