@@ -2,12 +2,22 @@ const express = require('express');
 const router = express.Router();
 const IntervalModel = require('../models/interval');
 
-// BISOGNA ANCORA FILTRARE TRA GLI INTERVALLI!!
-
 // get list of all intervals from the database
 router.get('/intervals', (req, res, next) => {
   IntervalModel.find({}).then(intervals => {
     res.send(intervals);
+  });
+});
+
+// get a list of intervals filtered by query
+router.get('/intervals/filter', (req, res, next) => {
+  IntervalModel.find({
+    user: req.query.user,
+    starting: req.query.start,
+    ending: req.query.end,
+    relatedGoal: req.query.goal,
+  }).then(filteredIntervals => {
+    res.send(filteredIntervals);
   });
 });
 

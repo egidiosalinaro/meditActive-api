@@ -15,7 +15,6 @@ const goalSchema = new Schema({
     type: Number,
     required: [true, 'please define how many days this goal will require'],
   },
-  intervals: { type: Schema.Types.ObjectId },
 });
 
 // creating goal model
