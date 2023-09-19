@@ -9,11 +9,11 @@ const goalSchema = new Schema({
   },
   description: {
     type: String,
-    default: `a challenging goal`,
+    default: 'a challenging goal',
   },
   days: {
     type: Number,
-    required: [true, 'please define how many days this goal will require'],
+    required: [true, 'please define how many days this goal usually requires'],
   },
 });
 
