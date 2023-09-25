@@ -31,12 +31,12 @@ app.use('/meditactive', usersRoute);
 app.use('/meditactive', goalsRoute);
 app.use('/meditactive', intervalsRoute);
 
-// error handling middleware
+// unprocessable error handling middleware
 app.use((err, req, res, next) => {
   res.status(422).send({ error: err.message });
 });
 
-// error 404 middleware
+// error 404 not found handling middleware
 app.get('*', (req, res) => {
   res.status(404).json({ message: '404: Not Found' });
 });
