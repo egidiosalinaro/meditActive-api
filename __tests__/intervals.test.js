@@ -86,7 +86,7 @@ describe('Intervals-related Endpoints', () => {
     });
   });
 
-  describe('create a new interval', () => {
+  describe('post a new interval', () => {
     describe('if there are missing params', () => {
       it('should return a 422 status and log what is missing', async () => {
         await testRequest.post('/meditactive/intervals/').expect(422);
@@ -108,10 +108,10 @@ describe('Intervals-related Endpoints', () => {
     });
   });
 
-  describe('check details of a specific interval', () => {
+  describe('get details of a specific interval', () => {
     describe('if the interval ID is wrong', () => {
-      it('should return a 404 not found status', async () => {
-        await testRequest.post('/meditactive/intervals/wrongID').expect(404);
+      it('should return a 422 unprocessable entity status', async () => {
+        await testRequest.get('/meditactive/intervals/wrongID').expect(422);
       });
     });
     describe('if the interval ID is correct', () => {
@@ -122,6 +122,27 @@ describe('Intervals-related Endpoints', () => {
         expect(statusCode).toBe(200);
         expect(body._id).toEqual(encodeURI(testId));
       });
+    });
+  });
+
+  describe('put an update to an interval', () => {
+    it('should return 200 and display the updated interval', async () => {
+      const testUpdate = {
+        user: '6509d98d4159aaa41b0fc1f5',
+        starting: '2023-11-21',
+        ending: '2023-11-29',
+        relatedGoal: '6508672e40718890fa24ceab',
+      };
+      await testRequest
+        .put(`/meditactive/intervals/${testId}`)
+        .send(testUpdate)
+        .expect(200);
+    });
+  });
+
+  describe('delete an interval from the database', () => {
+    it('should return 200 and display the updated interval', async () => {
+      await testRequest.delete(`/meditactive/intervals/${testId}`).expect(200);
     });
   });
 });
