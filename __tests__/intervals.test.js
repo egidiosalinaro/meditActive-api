@@ -54,7 +54,6 @@ describe('Intervals-related Endpoints', () => {
           .expect(422);
       });
     });
-
     describe('given the filtered intervals exists', () => {
       it('should return a 200 status and the filtered intervals', async () => {
         const { body, statusCode } = await testRequest.get(
@@ -65,7 +64,6 @@ describe('Intervals-related Endpoints', () => {
             `goal=${testInterval.relatedGoal}`
           }`
         );
-
         expect(statusCode).toBe(200);
         expect(body[0].user).toEqual(encodeURI(testInterval.user));
         expect(JSON.stringify(body[0].starting)).toEqual(
@@ -75,6 +73,28 @@ describe('Intervals-related Endpoints', () => {
           JSON.stringify(testInterval.ending)
         );
         expect(body[0].relatedGoal).toBe(encodeURI(testInterval.relatedGoal));
+      });
+    });
+  });
+
+  describe('create a new interval', () => {
+    describe('if there are missing params', () => {
+      it('should return a 422 status and log what is missing', async () => {
+        await testRequest.post('/meditactive/intervals/').expect(422);
+      });
+    });
+    describe('if every parameter is correctly entered', () => {
+      it('should return a 200 status and POST a new interval', async () => {
+        const postedInterval = {
+          user: '6509d98d4159aaa41b0fc1f5',
+          starting: '2023-10-01',
+          ending: '2023-10-10',
+          relatedGoal: '6508672e40718890fa24ceab',
+        };
+        await testRequest
+          .post('/meditactive/intervals/')
+          .send(postedInterval)
+          .expect(200);
       });
     });
   });
