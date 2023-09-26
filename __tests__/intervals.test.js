@@ -27,6 +27,15 @@ describe('Intervals-related Endpoints', () => {
     await disconnectToDB();
   });
 
+  describe('endpoint URL not typed correctly', () => {
+    it('should return a 404 status', async () => {
+      await testRequest.get('/meditactive/wrongURL/').expect(404);
+      await testRequest.post('/meditactive/wrongURL/').expect(404);
+      await testRequest.put('/meditactive/wrongURL/').expect(404);
+      await testRequest.delete('/meditactive/wrongURL/').expect(404);
+    });
+  });
+
   describe('get a list of all intervals from the database', () => {
     it('should return a 200 status and the intervals list', async () => {
       const { body, statusCode } = await testRequest.get(
@@ -95,6 +104,23 @@ describe('Intervals-related Endpoints', () => {
           .post('/meditactive/intervals/')
           .send(postedInterval)
           .expect(200);
+      });
+    });
+  });
+
+  describe('check details of a specific interval', () => {
+    describe('if the interval ID is wrong', () => {
+      it('should return a 404 not found status', async () => {
+        await testRequest.post('/meditactive/intervals/wrongID').expect(404);
+      });
+    });
+    describe('if the interval ID is correct', () => {
+      it('should return a 200 status and display the interval', async () => {
+        const { body, statusCode } = await testRequest.get(
+          `/meditactive/intervals/${testId}`
+        );
+        expect(statusCode).toBe(200);
+        expect(body._id).toEqual(encodeURI(testId));
       });
     });
   });
