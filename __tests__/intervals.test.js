@@ -141,7 +141,7 @@ describe('Intervals-related Endpoints', () => {
   });
 
   describe('delete an interval from the database', () => {
-    it('should return 200 and display the updated interval', async () => {
+    it('should return 200 and display the deleted interval', async () => {
       await testRequest.delete(`/meditactive/intervals/${testId}`).expect(200);
     });
   });

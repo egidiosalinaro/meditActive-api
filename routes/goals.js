@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const GoalModel = require('../models/goal');
 
-// get list of all goals from the database
+// get a list of all goals from the database
 router.get('/goals', (req, res, next) => {
   GoalModel.find({})
     .then(goals => {
