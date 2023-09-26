@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const UserModel = require('../models/user');
 
-// get list of all users from the database
+// get a list of all users from the database
 router.get('/users', (req, res, next) => {
   UserModel.find({})
     .then(users => {
