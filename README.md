@@ -27,9 +27,9 @@
     <li>
       <a href="#usage-joystick">Usage</a>
       <ul>
-        <li><a href="#users-standing_person">Users</a></li>
-        <li><a href="#goals">Goals</a></li>
-        <li><a href="#intervals-timer_clock">Intervals</a></li>
+        <li><a href="#users-">Users</a></li>
+        <li><a href="#goals--">Goals</a></li>
+        <li><a href="#intervals-%EF%B8%8F">Intervals</a></li>
       </ul>
     </li>
     <li><a href="#roadmap-world_map">Roadmap</a></li>
