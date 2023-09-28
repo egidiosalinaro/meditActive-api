@@ -64,3 +64,53 @@ Using the correct relevant endpoints you can interact with users, intervals and 
 </p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
+
+## Getting Started :clapper:
+
+I used `Node.js` to bootstrap this project. You can install it [here](https://nodejs.org/en). <br>
+Once installed, you are ready to go:
+
+### Prerequisites :pencil:
+
+* verify you installed Node.js correctly by checking its version on your computer
+  
+  ```sh
+  node -v
+  ```
+  ```sh
+  npm -v
+  ```
+* clone this repository
+  
+  ```sh
+  git clone https://github.com/egidiosalinaro/meditActive-api
+  ```
+  
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Installation :gear:
+
+Once downloaded this repo, in the project directory, you can:
+
+* connect your MongoDB database
+
+  create a `.env` file (you won't find mine because it is in the `.gitignore` list) containing an enviroment variable named `DB_URI` calling your MongoDB connection string (see the `DB_URI` environment variable in action in the file `databaseConnection.js`) <br>
+  Example: `DB_URI="mongodb+srv://...`
+
+* install libraries and dependencies
+  ```sh
+  npm install
+  
+* test the app
+  ```sh
+  npm test
+  ```
+
+* run the app
+  ```sh
+  npm start
+  ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
