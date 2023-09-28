@@ -213,7 +213,7 @@ The first parameter of every path is the name of the app itself `/meditactive`
      - end: insert a valid ISO date for the `ending` field
      - goal: insert a valid mongoID related to the `relatedGoal` field
   
-    example: `meditactive/intervals/filter?goal=6335c098bb3ddb89f54cd3d6&start=2023-10-01`
+    example: `/meditactive/intervals/filter?goal=6335c098bb3ddb89f54cd3d6&start=2023-10-01`
 
 - <ins><strong>_GET_</strong></ins> a specific interval's details* <br>
   `/meditactive/intervals/:id`
