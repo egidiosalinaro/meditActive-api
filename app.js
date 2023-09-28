@@ -1,14 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const { connectToDB, disconnectToDB } = require('./databaseConnection');
+const mongoose = require('mongoose');
 
 const app = express();
 const usersRoute = require('./routes/users');
-const intervalsRoute = require('./routes/intervals');
 const goalsRoute = require('./routes/goals');
+const intervalsRoute = require('./routes/intervals');
 
 // logger
 app.use(
@@ -17,8 +16,9 @@ app.use(
   )
 );
 
-// body parser
+// body parser and query parameters
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 
 // security middleware
 app.use(helmet());
@@ -26,23 +26,19 @@ app.use(helmet());
 // sanitize filter
 mongoose.set('sanitizeFilter', true);
 
-connectToDB();
-
 // initialize routes
 app.use('/meditactive', usersRoute);
-app.use('/meditactive', intervalsRoute);
 app.use('/meditactive', goalsRoute);
+app.use('/meditactive', intervalsRoute);
 
-// error handling middleware
+// unprocessable error handling middleware
 app.use((err, req, res, next) => {
   res.status(422).send({ error: err.message });
 });
 
-// error 404 middleware
+// error 404 not found handling middleware
 app.get('*', (req, res) => {
   res.status(404).json({ message: '404: Not Found' });
 });
 
-// listen for requests
-const port = 5000;
-app.listen(port, () => console.log(`Now listening on port ${port}...`));
+module.exports = app;

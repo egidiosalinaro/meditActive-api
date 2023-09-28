@@ -2,13 +2,13 @@
   "name": "meditactive-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "npx nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll"
   },
   "keywords": [],
-  "author": "",
+  "author": "Egidio Salinaro",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
@@ -19,7 +19,12 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.22.20",
+    "@babel/preset-env": "^7.22.20",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
     "mongodb-memory-server": "^8.15.1",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
   }
 }
