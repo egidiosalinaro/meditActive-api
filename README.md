@@ -74,7 +74,7 @@ Once installed, you are ready to go:
 
 ### Prerequisites :pencil:
 
-* verify you installed Node.js correctly by checking its version on your computer
+- verify you installed Node.js correctly by checking its version on your computer
   
   ```sh
   node -v
@@ -82,7 +82,7 @@ Once installed, you are ready to go:
   ```sh
   npm -v
   ```
-* clone this repository
+- clone this repository
   
   ```sh
   git clone https://github.com/egidiosalinaro/meditActive-api
@@ -94,23 +94,129 @@ Once installed, you are ready to go:
 
 Once downloaded this repo, in the project directory, you can:
 
-* connect your MongoDB database
+- connect your MongoDB database
 
   create a `.env` file (you won't find mine because it is in the `.gitignore` list) containing an enviroment variable named `DB_URI` calling your MongoDB connection string (see the `DB_URI` environment variable in action in the file `databaseConnection.js`) <br>
   Example: `DB_URI="mongodb+srv://...`
 
-* install libraries and dependencies
+- install libraries and dependencies
   ```sh
   npm install
   
-* test the app
+- test the app
   ```sh
   npm test
   ```
 
-* run the app
+- run the app
   ```sh
   npm start
   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- USAGE EXAMPLES -->
+
+## Usage :joystick:
+
+You can use this API on the port 5000 via platforms like Postman, Thunderclient or Insomnia.
+The first parameter of every path is the name of the app itself `/meditactive`
+
+### Users 🧍
+
+- <ins><strong>_GET_</strong></ins> a list of all users from the database <br>
+  `/meditactive/users`
+
+- add a new user to the database with a <ins><strong>_POST_</strong></ins> request <br>
+  `/meditactive/users`
+  ```json
+  {
+      "name": "insert an alphanumeric string, min 2 characters",
+      "surname": "insert an alphanumeric string, min 2 characters",
+      "email": "insert a valid email"
+  }
+  ```
+
+- <ins><strong>_GET_</strong></ins> a specific user's details* <br>
+  `/meditactive/users/:id`
+
+- update a user with a <ins><strong>_PUT_</strong></ins> request* <br>
+  `/meditactive/users/:id`
+
+- <ins><strong>_DELETE_</strong></ins> a user from the database* <br>
+  `/meditactive/users/:id`
+
+*(:id must be a valid MongoDB id)
+  
+### Goals 🎯 🥅
+
+- <ins><strong>_GET_</strong></ins> a list of all goals from the database <br>
+  `/meditactive/goals`
+
+- add a new goal to the database with a <ins><strong>_POST_</strong></ins> request <br>
+  `/meditactive/goals`
+  ```json
+  {
+      "title": "insert an alphanumeric string, min 2 characters",
+      "description": "insert an alphanumeric string, min 2 characters",
+      "days": "insert a number"
+  }
+  ```
+
+- <ins><strong>_GET_</strong></ins> a specific goal's details* <br>
+  `/meditactive/goals/:id`
+
+- update a goal with a <ins><strong>_PUT_</strong></ins> request* <br>
+  `/meditactive/goals/:id`
+
+- <ins><strong>_DELETE_</strong></ins> a goal from the database* <br>
+  `/meditactive/goals/:id`
+
+*(:id must be a valid MongoDB id)
+
+### Intervals ⏲️
+
+- <ins><strong>_GET_</strong></ins> a list of all intervals from the database <br>
+  `/meditactive/intervals`
+
+- add a new interval to the database with a <ins><strong>_POST_</strong></ins> request <br>
+  `/meditactive/intervals`
+  ```json
+  {
+      "user": "insert a valid mongoID related to an existing user",
+      "starting": "insert a valid ISO date",
+      "ending": "insert a valid ISO date"
+  }
+  ```
+
+- join an interval with a goal using a <ins><strong>_PUT_</strong></ins> request* <br>
+  `/meditactive/intervals/:id`
+   ```json
+  {
+      "relatedGoal": "insert a valid mongoID related to an existing goal"
+  }
+  ```
+
+- <ins><strong>_GET_</strong></ins> a list of intervals filtered by queries <br>
+  `/meditactive/intervals/filter`
+
+    Filter parameters:
+     - user: insert a valid mongoID related to the `user` field
+     - start: insert a valid ISO date for the `starting` field
+     - end: insert a valid ISO date for the `ending` field
+     - goal: insert a valid mongoID related to the `relatedGoal` field
+  
+    example: `meditactive/intervals/filter?goal=6335c098bb3ddb89f54cd3d6&start=2023-10-01`
+
+- <ins><strong>_GET_</strong></ins> a specific interval's details* <br>
+  `/meditactive/intervals/:id`
+
+- update an interval with a <ins><strong>_PUT_</strong></ins> request* <br>
+  `/meditactive/intervals/:id`
+
+- <ins><strong>_DELETE_</strong></ins> an interval from the database* <br>
+  `/meditactive/intervals/:id`
+
+*(:id must be a valid MongoDB id)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
