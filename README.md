@@ -24,7 +24,14 @@
         <li><a href="#installation-gear">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage-joystick">Usage</a></li>
+    <li>
+      <a href="#usage-joystick">Usage</a>
+      <ul>
+        <li><a href="#users-standing_person">Users</a></li>
+        <li><a href="#goals">Goals</a></li>
+        <li><a href="#intervals-timer_clock">Intervals</a></li>
+      </ul>
+    </li>
     <li><a href="#roadmap-world_map">Roadmap</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -218,5 +225,45 @@ The first parameter of every path is the name of the app itself `/meditactive`
   `/meditactive/intervals/:id`
 
 *(:id must be a valid MongoDB id)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ROADMAP -->
+
+## Roadmap :world_map:
+
+- [x] `.env` file containing mongoDB key
+- [x] functions to connect/disconnect to database via `mongoose`
+- [x] app configuration
+    - [x] logger
+    - [x] security middleware
+    - [x] initializing routes
+    - [x] error handling middlewares
+- [x] server main file
+- [x] creating Schemas and models
+- [x] routes files
+    - [x] intervals routes
+       - [x] mongoose `find` method for filtering queries
+    - [x] users routes
+    - [x] goals routes
+    - [x] adding `.next` to catch error middlewares if needed
+- [x] testing all routes and errors with `jest` and `supertest`
+- [x] final code cleaning and code consistency
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTACT -->
+
+## Contact
+
+egidiosalinaro@gmail.com
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
